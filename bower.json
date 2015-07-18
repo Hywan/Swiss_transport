@@ -1,0 +1,28 @@
+{
+  "name": "swiss/transport",
+  "private": "true",
+  "dependencies": {
+    "vue": "yyx990803/vue#csp",
+    "gaia-fonts": "gaia-components/gaia-fonts",
+    "gaia-sub-header": "gaia-components/gaia-sub-header",
+    "gaia-checkbox": "gaia-components/gaia-checkbox",
+    "gaia-dialog": "gaia-components/gaia-dialog",
+    "gaia-header": "gaia-components/gaia-header",
+    "gaia-list": "gaia-components/gaia-list",
+    "gaia-slider": "gaia-components/gaia-slider",
+    "gaia-switch": "gaia-components/gaia-switch",
+    "gaia-tabs": "gaia-components/gaia-tabs",
+    "gaia-text-input": "gaia-components/gaia-text-input",
+    "gaia-theme": "gaia-components/gaia-theme",
+    "gaia-button": "gaia-components/gaia-button",
+    "gaia-loading": "gaia-components/gaia-loading",
+    "pressed": "gaia-components/pressed",
+    "drag": "gaia-components/drag",
+    "base": "gaia-components/base",
+    "gaia-toast": "gaia-components/gaia-toast",
+    "gaia-picker": "gaia-components/gaia-picker",
+    "gaia-value-selector": "gaia-components/gaia-value-selector",
+    "gaia-progress": "gaia-components/gaia-progress",
+    "moment": "~2.10.3"
+  }
+}

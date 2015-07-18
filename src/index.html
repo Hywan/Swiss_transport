@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+
+    <title>Swiss transport</title>
+
+    <link rel="stylesheet" type="text/css" href="/vendor/base/base.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/gaia-theme/gaia-theme.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/gaia-fonts/style.css">
+    <link rel="stylesheet" type="text/css" href="/src/css/main.css">
+
+    <script src="/vendor/evt/index.js"></script>
+    <script src="/vendor/drag/drag.js"></script>
+    <script src="/vendor/pressed/pressed.js"></script>
+    <script src="/vendor/gaia-component/gaia-component.js"></script>
+    <script src="/vendor/gaia-icons/gaia-icons.js"></script>
+    <script src="/vendor/gaia-theme/lib/gaia-theme-selector.js"></script>
+    <script src="/vendor/gaia-sub-header/gaia-sub-header.js"></script>
+    <script src="/vendor/gaia-text-input/gaia-text-input.js"></script>
+    <script src="/vendor/gaia-text-input/gaia-text-input-multiline.js"></script>
+    <script src="/vendor/gaia-text-input/gaia-text-input-pin.js"></script>
+    <script src="/vendor/gaia-value-selector/gaia-value-selector.js"></script>
+    <script src="/vendor/gaia-list/gaia-list.js"></script>
+    <script src="/vendor/gaia-checkbox/gaia-checkbox.js"></script>
+    <script src="/vendor/gaia-slider/gaia-slider.js"></script>
+    <script src="/vendor/font-fit/font-fit.js"></script>
+    <script src="/vendor/gaia-header/gaia-header.js"></script>
+    <script src="/vendor/gaia-switch/gaia-switch.js"></script>
+    <script src="/vendor/gaia-button/gaia-button.js"></script>
+    <script src="/vendor/gaia-dialog/gaia-dialog.js"></script>
+    <script src="/vendor/gaia-dialog/gaia-dialog-alert.js"></script>
+    <script src="/vendor/gaia-dialog/gaia-dialog-confirm.js"></script>
+    <script src="/vendor/gaia-dialog/gaia-dialog-prompt.js"></script>
+    <script src="/vendor/gaia-dialog/gaia-dialog-action.js"></script>
+    <script src="/vendor/gaia-dialog/gaia-dialog-select.js"></script>
+    <script src="/vendor/gaia-dialog/gaia-dialog-menu.js"></script>
+    <script src="/vendor/gaia-progress/gaia-progress.js"></script>
+    <script src="/vendor/gaia-loading/gaia-loading.js"></script>
+    <script src="/vendor/gaia-toolbar/gaia-toolbar.js"></script>
+    <script src="/vendor/gaia-toast/gaia-toast.js"></script>
+    <script src="/vendor/gaia-tabs/gaia-tabs.js"></script>
+    <script src="/vendor/gaia-picker/lib/snap-scroll.js"></script>
+    <script src="/vendor/gaia-picker/gaia-picker.js"></script>
+    <script src="/vendor/gaia-picker/gaia-picker-date.js"></script>
+    <script src="/vendor/gaia-picker/gaia-picker-time.js"></script>
+
+    <script src="/vendor/vue/dist/vue.js"></script>
+    <script src="/vendor/moment/moment.js"></script>
+
+    <script src="/src/js/application.js"></script>
+  </head>
+
+  <body role="application" class="theme-productivity">
+    <gaia-header>
+      <h1>Swiss transport</h1>
+    </gaia-header>
+
+    <section class="padded">
+      <form>
+        <gaia-text-input id="from" placeholder="From…" value="Lausanne"></gaia-text-input>
+        <gaia-text-input id="to"   placeholder="To…" value="Yverdon"></gaia-text-input>
+        <gaia-button v-on="click: search">Search!</gaia-button>
+      </form>
+    </section>
+
+    <section class="padded">
+      <gaia-sub-header>Result</gaia-sub-header>
+
+      <gaia-list id="results" class="contacts">
+        <a v-repeat="connections">
+          <div flex>
+            <h3>{{from.departure | date-calendar}}</h3>
+            <h3>{{to.arrival | date-calendar}}</h3>
+            <p>duration {{from.departure | duration to.arrival}}</p>
+          </div>
+        </a>
+      </gaia-list>
+    </section>
+  </body>
+
+</html>
