@@ -1,3 +1,19 @@
+@font-face {
+    /**
+     * EmojiSymbols Font © blockworks, Kenichi Kaneko
+     * http://emojisymbols.com/
+     */
+    font-family: Emoji;
+    src: url('../font/EmojiSymbols.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    unicode-range: U+1F300-1F5FF, U+1F600-1F64F, U+1F680-1F6FF, U+2600-26FF;
+}
+
+.emoji {
+    font-family: Emoji;
+}
+
 section.padded {
     padding-left: .8rem;
     padding-right: .8rem;
