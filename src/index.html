@@ -65,6 +65,8 @@
       </form>
     </section>
 
+    <gaia-loading v-if="loading.connections"></gaia-loading>
+
     <section class="padded" v-if="connections.length > 0">
       <gaia-sub-header>Results</gaia-sub-header>
 

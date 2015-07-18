@@ -1,6 +1,9 @@
 const CONNECTIONS_URI = 'http://transport.opendata.ch/v1/connections?';
 
 var model = {
+    loading: {
+        connections: false
+    },
     connections: []
 };
 
@@ -29,8 +32,13 @@ function Connection(from, to) {
     this.to           = to;
     this.__iterator__ = null;
 
+    model.connections         = [];
+    model.loading.connections = true;
+
     var httpRequest    = new XMLHttpRequest();
     httpRequest.onload = function () {
+        model.loading.connections = false;
+
         console.log(JSON.parse(this.responseText));
         model.connections = JSON.parse(this.responseText).connections;
     };
