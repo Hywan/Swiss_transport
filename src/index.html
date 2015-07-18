@@ -79,7 +79,7 @@
               {{to.arrival | date-calendar}}
             </h3>
             <p>
-              duration: {{from.departure | duration to.arrival}}
+              <span class="emoji">🕓</span> {{from.departure | duration to.arrival}}
               <template v-if="from.platform">
                 • platform: {{from.platform}}
               </template>
