@@ -24,7 +24,7 @@ Vue.filter('date-calendar', function(date) {
 });
 
 Vue.filter('duration', function(date1, date2) {
-    return moment.utc(moment(date2).diff(moment(date1))).format('HH:mm')
+    return moment.utc(moment(date2).diff(moment(date1))).format('HH[h]mm')
 });
 
 function Connection(from, to) {
