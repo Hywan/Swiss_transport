@@ -75,7 +75,10 @@
           <div flex>
             <h3>{{from.departure | date-calendar}}</h3>
             <h3>{{to.arrival | date-calendar}}</h3>
-            <p>duration {{from.departure | duration to.arrival}}</p>
+            <p>
+              duration {{from.departure | duration to.arrival}},
+              platform: {{from.platform}}
+            </p>
           </div>
         </a>
       </gaia-list>
