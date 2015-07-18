@@ -81,7 +81,7 @@
             <p>
               <span class="emoji">🕓</span> {{from.departure | duration to.arrival}}
               <template v-if="from.platform">
-                • platform: {{from.platform}}
+                • platform {{from.platform}}
               </template>
               • {{sections.length - 1}} changes
             </p>
