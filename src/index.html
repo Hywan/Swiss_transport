@@ -65,8 +65,8 @@
       </form>
     </section>
 
-    <section class="padded">
-      <gaia-sub-header>Result</gaia-sub-header>
+    <section class="padded" v-if="connections.length > 0">
+      <gaia-sub-header>Results</gaia-sub-header>
 
       <gaia-list id="results" class="contacts">
         <a v-repeat="connections">
