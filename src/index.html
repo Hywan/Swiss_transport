@@ -102,23 +102,22 @@
       </gaia-header>
 
       <section class="padded">
-        <gaia-list class="contacts">
-          <div>
+        <gaia-list class="contacts timed">
+          <div v-repeat="connection.sections">
             <div flex>
-              <h3>Lausanne</h3>
-              <p>  |- foo</p>
-              <p>  |- foo</p>
-              <p>  |- foo</p>
-              <h3>Yverdon-les-Bains</h3>
-            </div>
-          </div>
-          <div>
-            <div flex>
-              <h3>Lausanne</h3>
-              <p>foo</p>
-              <p>foo</p>
-              <p>foo</p>
-              <h3>Yverdon-les-Bains</h3>
+              <h3>
+                {{departure.station.name}}
+                <time>{{departure.departure | hour-minute}}</time>
+              </h3>
+              <ul class="journey">
+                <li v-repeat="journey.passList | shift | pop">
+                  {{station.name}}
+                </li>
+              </ul>
+              <h3>
+                {{arrival.station.name}}
+                <time>{{arrival.arrival | hour-minute}}</time>
+              </h3>
             </div>
           </div>
         </gaia-list>

@@ -2,13 +2,14 @@ const CONNECTIONS_URI = 'http://transport.opendata.ch/v1/connections?';
 
 var model = {
     view: {
-        list   : false,
-        details: true
+        list   : true,
+        details: false
     },
     loading: {
         connections: false
     },
-    connections: []
+    connections: [],
+    connection: null
 };
 
 function $(selector) {
@@ -27,8 +28,30 @@ Vue.filter('date-calendar', function(date) {
     return _date.calendar();
 });
 
+Vue.filter('hour-minute', function(date) {
+    return moment(date).format('HH:mm');
+});
+
 Vue.filter('duration', function(date1, date2) {
     return moment.utc(moment(date2).diff(moment(date1))).format('H[h]mm')
+});
+
+Vue.filter('shift', function(array) {
+    return array.filter(
+        function (item, key) {
+            return 0 !== key;
+        }
+    );
+});
+
+Vue.filter('pop', function(array) {
+    var last = array.length - 1;
+
+    return array.filter(
+        function (item, key) {
+            return last !== key;
+        }
+    );
 });
 
 function Connection(from, to) {
@@ -73,11 +96,17 @@ window.addEventListener(
                         list   : true,
                         details: false
                     };
+                    model.connection = null;
                 },
-                requestDetails: function () {
+                requestDetails: function (e) {
                     model.view = {
                         list   : false,
                         details: true
+                    };
+                    model.connection = {
+                        from    : e.targetVM.from,
+                        to      : e.targetVM.to,
+                        sections: e.targetVM.sections
                     };
                 }
             }

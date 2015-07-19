@@ -50,3 +50,36 @@ section.padded {
     body.view-details #details {
         left: 0;
     }
+
+ul.journey {
+    position: relative;
+    list-style-type: none;
+    margin: .2em 0;
+    padding: .5em 0;
+}
+
+    ul.journey::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: .4rem;
+        width: 3px;
+        bottom: 0;
+        background: var(--header-background, #000);
+    }
+
+    ul.journey > li {
+        font-size: small;
+        margin-left: 1.2rem;
+    }
+
+gaia-list.timed {
+    position: relative;
+    padding-left: 1.5em;
+}
+
+gaia-list.timed h3 time {
+    position: absolute;
+    left: -1.8em;
+    font-size: small;
+}
