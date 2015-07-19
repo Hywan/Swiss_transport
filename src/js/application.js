@@ -1,6 +1,10 @@
 const CONNECTIONS_URI = 'http://transport.opendata.ch/v1/connections?';
 
 var model = {
+    view: {
+        list   : false,
+        details: true
+    },
     loading: {
         connections: false
     },
@@ -60,9 +64,21 @@ window.addEventListener(
             el: '[role="application"]',
             data: model,
             methods: {
-                search: function () {
+                requestSearch: function () {
                     console.log('Start searching…');
                     new Connection('Yverdon-les-Bains', 'Lausanne');
+                },
+                requestList: function () {
+                    model.view = {
+                        list   : true,
+                        details: false
+                    };
+                },
+                requestDetails: function () {
+                    model.view = {
+                        list   : false,
+                        details: true
+                    };
                 }
             }
         });

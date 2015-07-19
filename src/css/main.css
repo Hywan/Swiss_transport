@@ -10,6 +10,11 @@
     unicode-range: U+1F300-1F5FF, U+1F600-1F64F, U+1F680-1F6FF, U+2600-26FF;
 }
 
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
 .emoji {
     font-family: Emoji;
 }
@@ -18,3 +23,33 @@ section.padded {
     padding-left: .8rem;
     padding-right: .8rem;
 }
+
+#list, #details {
+    transition: left .25s ease-out;
+}
+
+#list {
+    position: absolute;
+    width: 100%;
+}
+
+    body.view-list #list {
+        left: 0;
+    }
+
+    body.view-list #details {
+        left: 100vw;
+    }
+
+#details {
+    position: absolute;
+    width: 100%;
+}
+
+    body.view-details #list {
+        left: -100vw;
+    }
+
+    body.view-details #details {
+        left: 0;
+    }

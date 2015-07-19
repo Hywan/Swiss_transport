@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/vendor/base/base.css">
     <link rel="stylesheet" type="text/css" href="/vendor/gaia-theme/gaia-theme.css">
     <link rel="stylesheet" type="text/css" href="/vendor/gaia-fonts/style.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/gaia-icons/gaia-icons.css">
     <link rel="stylesheet" type="text/css" href="/src/css/main.css">
 
     <script src="/vendor/evt/index.js"></script>
@@ -52,42 +53,76 @@
     <script src="/src/js/application.js"></script>
   </head>
 
-  <body role="application" class="theme-productivity">
-    <gaia-header>
-      <h1>Swiss transport</h1>
-    </gaia-header>
+  <body
+    role="application"
+    class="theme-productivity"
+    v-class="view-list: view.list, view-details: view.details">
+    <section id="list">
+      <gaia-header>
+        <h1>Swiss transport</h1>
+      </gaia-header>
 
-    <section class="padded">
-      <form>
-        <gaia-text-input id="from" placeholder="From…" value="Lausanne"></gaia-text-input>
-        <gaia-text-input id="to"   placeholder="To…" value="Yverdon"></gaia-text-input>
-        <gaia-button v-on="click: search">Search!</gaia-button>
-      </form>
+      <section class="padded">
+        <form>
+          <gaia-text-input id="from" placeholder="From…" value="Lausanne"></gaia-text-input>
+          <gaia-text-input id="to"   placeholder="To…" value="Yverdon"></gaia-text-input>
+          <gaia-button v-on="click: requestSearch">Search!</gaia-button>
+        </form>
+
+        <gaia-loading v-if="loading.connections"></gaia-loading>
+
+        <section v-if="connections.length > 0">
+          <gaia-sub-header>Connections</gaia-sub-header>
+
+          <gaia-list id="results" class="contacts">
+            <a v-repeat="connections" v-on="click: requestDetails">
+              <div flex>
+                <h3>
+                  {{from.departure | date-calendar}}
+                  <span class="emoji">🚄</span>
+                  {{to.arrival | date-calendar}}
+                </h3>
+                <p>
+                  <span class="emoji">🕓</span> {{from.departure | duration to.arrival}}
+                  <template v-if="from.platform">
+                    • platform {{from.platform}}
+                  </template>
+                  • {{sections.length - 1}} changes
+                </p>
+              </div>
+            </a>
+          </gaia-list>
+        </section>
+      </section>
     </section>
 
-    <gaia-loading v-if="loading.connections"></gaia-loading>
+    <section id="details">
+      <gaia-header action="back" v-on="click: requestList">
+        <h1>Connection details</h1>
+      </gaia-header>
 
-    <section class="padded" v-if="connections.length > 0">
-      <gaia-sub-header>Connections</gaia-sub-header>
-
-      <gaia-list id="results" class="contacts">
-        <a v-repeat="connections">
-          <div flex>
-            <h3>
-              {{from.departure | date-calendar}}
-              <span class="emoji">🚄</span>
-              {{to.arrival | date-calendar}}
-            </h3>
-            <p>
-              <span class="emoji">🕓</span> {{from.departure | duration to.arrival}}
-              <template v-if="from.platform">
-                • platform {{from.platform}}
-              </template>
-              • {{sections.length - 1}} changes
-            </p>
+      <section class="padded">
+        <gaia-list class="contacts">
+          <div>
+            <div flex>
+              <h3>Lausanne</h3>
+              <p>  |- foo</p>
+              <p>  |- foo</p>
+              <p>  |- foo</p>
+              <h3>Yverdon-les-Bains</h3>
+            </div>
           </div>
-        </a>
-      </gaia-list>
+          <div>
+            <div flex>
+              <h3>Lausanne</h3>
+              <p>foo</p>
+              <p>foo</p>
+              <p>foo</p>
+              <h3>Yverdon-les-Bains</h3>
+            </div>
+          </div>
+        </gaia-list>
+      </section>
     </section>
   </body>
 
