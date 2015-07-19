@@ -12,7 +12,13 @@
 
 body {
     position: relative;
-    overflow-x: hidden;
+    overflow: hidden;
+}
+
+section.panel {
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
 }
 
 .emoji {
@@ -25,12 +31,8 @@ section.padded {
 }
 
 #list, #details {
-    transition: left .25s ease-out;
-}
-
-#list {
     position: absolute;
-    width: 100%;
+    transition: left .25s ease-out;
 }
 
     body.view-list #list {
@@ -40,11 +42,6 @@ section.padded {
     body.view-list #details {
         left: 100vw;
     }
-
-#details {
-    position: absolute;
-    width: 100%;
-}
 
     body.view-details #list {
         left: -100vw;

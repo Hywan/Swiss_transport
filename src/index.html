@@ -57,7 +57,7 @@
     role="application"
     class="theme-productivity"
     v-class="view-list: view.list, view-details: view.details">
-    <section id="list">
+    <section id="list" class="panel">
       <gaia-header>
         <h1>Swiss transport</h1>
       </gaia-header>
@@ -96,7 +96,7 @@
       </section>
     </section>
 
-    <section id="details">
+    <section id="details" class="panel">
       <gaia-header action="back" v-on="click: requestList">
         <h1>Connection details</h1>
       </gaia-header>
