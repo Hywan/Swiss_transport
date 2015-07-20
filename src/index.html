@@ -78,9 +78,9 @@
             <a v-repeat="connections" v-on="click: requestDetails">
               <div flex>
                 <h3>
-                  {{from.departure | date-calendar}}
+                  <time>{{from.departure | date-calendar}}</time>
                   <span class="emoji">🚄</span>
-                  {{to.arrival | date-calendar}}
+                  <time>{{to.arrival | date-calendar}}</time>
                 </h3>
                 <p>
                   <span class="emoji">🕓</span> {{from.departure | duration to.arrival}}
