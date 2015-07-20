@@ -107,8 +107,18 @@
             <div flex>
               <h3>
                 {{departure.station.name}}
-                <time>{{departure.departure | hour-minute}}</time>
+                <time>
+                  {{departure.departure | hour-minute}}
+                </time>
               </h3>
+              <p>
+                <template v-if="departure.platform">
+                  platform {{departure.platform}}
+                </template>
+                <template v-if="journey">
+                  • {{journey.name}} (to {{journey.to}})
+                </template>
+              </p>
               <ul class="journey">
                 <li v-repeat="journey.passList | shift | pop">
                   {{station.name}}
@@ -116,8 +126,16 @@
               </ul>
               <h3>
                 {{arrival.station.name}}
-                <time>{{arrival.arrival | hour-minute}}</time>
+                <time>
+                  {{arrival.arrival | hour-minute}} <br />
+                </time>
               </h3>
+              <p>
+                <span class="emoji">🕓</span> {{departure.departure | duration arrival.arrival}}
+                <template v-if="arrival.platform">
+                  • platform {{arrival.platform}}
+                </template>
+              </p>
             </div>
           </div>
         </gaia-list>
