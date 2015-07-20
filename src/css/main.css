@@ -32,23 +32,23 @@ section.padded {
 
 #list, #details {
     position: absolute;
-    transition: left .25s ease-out;
+    transition: transform .25s ease;
 }
 
     body.view-list #list {
-        left: 0;
+        transform: translateX(0);
     }
 
     body.view-list #details {
-        left: 100vw;
+        transform: translateX(100vw);
     }
 
     body.view-details #list {
-        left: -100vw;
+        transform: translateX(-100vw);
     }
 
     body.view-details #details {
-        left: 0;
+        transform: translateX(0);
     }
 
 ul.journey {

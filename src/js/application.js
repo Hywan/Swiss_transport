@@ -99,14 +99,14 @@ window.addEventListener(
                     model.connection = null;
                 },
                 requestDetails: function (e) {
-                    model.view = {
-                        list   : false,
-                        details: true
-                    };
                     model.connection = {
                         from    : e.targetVM.from,
                         to      : e.targetVM.to,
                         sections: e.targetVM.sections
+                    };
+                    model.view = {
+                        list   : false,
+                        details: true
                     };
                 }
             }
