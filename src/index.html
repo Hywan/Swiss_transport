@@ -82,13 +82,17 @@
                   <span class="emoji">🚄</span>
                   <time>{{to.arrival | date-calendar}}</time>
                 </h3>
-                <p>
-                  <span class="emoji">🕓</span> {{from.departure | duration to.arrival}}
-                  <template v-if="from.platform">
-                    • platform {{from.platform}}
-                  </template>
-                  • {{sections.length - 1}} changes
-                </p>
+                <ul class="inline">
+                  <li>
+                    <span class="emoji">🕓</span> {{from.departure | duration to.arrival}}
+                  </li>
+                  <li v-if="from.platform">
+                    platform {{from.platform}}
+                  </li>
+                  <li>
+                    {{sections.length - 1}} changes
+                  </li>
+                </ul>
               </div>
             </a>
           </gaia-list>
@@ -111,14 +115,17 @@
                   {{departure.departure | hour-minute}}
                 </time>
               </h3>
-              <p>
-                <template v-if="departure.platform">
+              <ul class="inline">
+                <li>
+                  <span class="emoji">🕓</span> {{departure.departure | duration arrival.arrival}}
+                </li>
+                <li v-if="departure.platform">
                   platform {{departure.platform}}
-                </template>
-                <template v-if="journey">
-                  • {{journey.name}} (to {{journey.to}})
-                </template>
-              </p>
+                </li>
+                <li v-if="journey">
+                  {{journey.name}} (to {{journey.to}})
+                </li>
+              </ul>
               <ul class="journey">
                 <li v-repeat="journey.passList | shift | pop">
                   {{station.name}}
@@ -130,12 +137,11 @@
                   {{arrival.arrival | hour-minute}} <br />
                 </time>
               </h3>
-              <p>
-                <span class="emoji">🕓</span> {{departure.departure | duration arrival.arrival}}
-                <template v-if="arrival.platform">
-                  • platform {{arrival.platform}}
-                </template>
-              </p>
+              <ul class="inline">
+                <li v-if="arrival.platform">
+                  platform {{arrival.platform}}
+                </li>
+              </ul>
             </div>
           </div>
         </gaia-list>

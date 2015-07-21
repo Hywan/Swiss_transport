@@ -83,3 +83,26 @@ gaia-list.timed h3 time {
     left: -1.8em;
     font-size: small;
 }
+
+ul.inline {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: small;
+}
+
+    ul.inline > li {
+        position: relative;
+        display: inline-block;
+        margin-right: 1em;
+    }
+
+    ul.inline > li:not(:last-child)::after {
+        content: '•';
+        position: absolute;
+        right: -1em;
+        bottom: 0;
+        display: inline-block;
+        width: 1em;
+        text-align: center;
+    }
