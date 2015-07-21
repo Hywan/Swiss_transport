@@ -56,6 +56,7 @@ ul.journey {
     list-style-type: none;
     margin: .2em 0;
     padding: .5em 0;
+    font-size: small;
 }
 
     ul.journey::after {
@@ -69,8 +70,21 @@ ul.journey {
     }
 
     ul.journey > li {
-        font-size: small;
-        margin-left: 1.2rem;
+        position: relative;
+        margin-left: 1.4em;
+    }
+
+    ul.journey > li::before {
+        z-index: 1;
+        content: '';
+        position: absolute;
+        top: calc(50% - .4em);
+        left: -1.21em;
+        width: .8em;
+        height: .8em;
+        border-radius: 50%;
+        border: 2px var(--header-background, #000) solid;
+        background: #fff;
     }
 
 gaia-list.timed {
