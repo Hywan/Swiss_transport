@@ -5,9 +5,11 @@ So far, a side project. Maybe a real one in few weeks.
 ## Screenshots!
 
 Search for all your connections:
+
 ![Search](http://i.imgur.com/Fhq24YB.png)
 
 See connection details (with platforms, duration, transport name etc.):
+
 ![Details](http://i.imgur.com/vs6lZs4.png)
 
 ## Requirements
