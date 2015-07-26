@@ -4,18 +4,26 @@ So far, a side project. Maybe a real one in few weeks.
 
 ## Screenshots!
 
-Search for all your connections:
+Search a connection:
 
-![Search](http://i.imgur.com/Fhq24YB.png)
+![Connection](http://i.imgur.com/M9VUpQC.png)
 
 See connection details (with platforms, duration, transport name etc.):
 
-![Details](http://i.imgur.com/vs6lZs4.png)
+![Details](http://i.imgur.com/s9VV8Wu.png)
+
+Menu:
+
+![Menu](http://i.imgur.com/99JjeWC.png)
+
+Station board:
+
+![Station board](http://i.imgur.com/psg704X.png)
 
 ## Requirements
 
-This project uses gaia-components, so the `dom.webcomponents.enabled` property
-is supposed to be turned on.
+This project uses [Gaia components](https://wiki.mozilla.org/Gaia/Shared/Components), so the
+`dom.webcomponents.enabled` property is supposed to be turned on.
 
 ## License
 
