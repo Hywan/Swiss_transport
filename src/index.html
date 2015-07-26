@@ -56,16 +56,26 @@
   <body
     role="application"
     class="theme-productivity"
-    v-class="view-list: view.list, view-details: view.details">
-    <section id="list" class="panel">
-      <gaia-header>
-        <h1>Swiss transport</h1>
+    v-class="view-connections: view.connections,
+             view-details: view.details,
+             view-station-board: view.stationBoard">
+    <section id="menu" aria-hidden="{{view.menuHidden}}">
+      <ul>
+        <li><a v-on="click: requestCloseMenu('requestConnections')">Connections</a></li>
+        <li><a v-on="click: requestCloseMenu('requestStationBoard')">Station board</a></li>
+        <li><a href="http://sbb.ch/" target="_blank">SBB</a></li>
+      </ul>
+      <a v-on="click: requestCloseMenu"> </a>
+    </section>
+    <section id="connections" class="panel">
+      <gaia-header action="menu" v-on="click: requestOpenMenu">
+        <h1>Find connections</h1>
       </gaia-header>
 
       <section class="padded">
         <form>
-          <gaia-text-input id="from" placeholder="From…" value="Lausanne"></gaia-text-input>
-          <gaia-text-input id="to"   placeholder="To…" value="Yverdon"></gaia-text-input>
+          <gaia-text-input id="from" placeholder="From…" value="Basel"></gaia-text-input>
+          <gaia-text-input id="to"   placeholder="To…" value="Genève"></gaia-text-input>
           <gaia-button v-on="click: requestSearch">Search!</gaia-button>
         </form>
 
@@ -101,7 +111,7 @@
     </section>
 
     <section id="details" class="panel">
-      <gaia-header action="back" v-on="click: requestList">
+      <gaia-header action="back" v-on="click: requestConnections">
         <h1>Connection details</h1>
       </gaia-header>
 
@@ -146,6 +156,12 @@
           </div>
         </gaia-list>
       </section>
+    </section>
+
+    <section id="stationBoard" class="panel">
+      <gaia-header action="menu" v-on="click: requestOpenMenu">
+        <h1>Station board</h1>
+      </gaia-header>
     </section>
   </body>
 

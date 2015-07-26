@@ -2,8 +2,10 @@ const CONNECTIONS_URI = 'http://transport.opendata.ch/v1/connections?';
 
 var model = {
     view: {
-        list   : true,
-        details: false
+        menuHidden  : true,
+        connections : true,
+        details     : false,
+        stationBoard: false
     },
     loading: {
         connections: false
@@ -87,16 +89,30 @@ window.addEventListener(
             el: '[role="application"]',
             data: model,
             methods: {
+                requestOpenMenu: function () {
+                    model.view.menuHidden = false;
+                },
+                requestCloseMenu: function (callback) {
+                    model.view.menuHidden = true;
+
+                    if (undefined !== callback) {
+                        this[callback]();
+                    }
+                },
                 requestSearch: function () {
                     console.log('Start searching…');
                     new Connection('Yverdon-les-Bains', 'Lausanne');
                 },
-                requestList: function () {
-                    model.view = {
-                        list   : true,
-                        details: false
-                    };
-                    model.connection = null;
+                requestConnections: function () {
+                    model.view.connections  = true;
+                    model.view.details      = false;
+                    model.view.stationBoard = false;
+                    window.setTimeout(
+                        function () {
+                            model.connection = null;
+                        },
+                        500
+                    );
                 },
                 requestDetails: function (e) {
                     model.connection = {
@@ -104,10 +120,12 @@ window.addEventListener(
                         to      : e.targetVM.to,
                         sections: e.targetVM.sections
                     };
-                    model.view = {
-                        list   : false,
-                        details: true
-                    };
+                    model.view.details     = true;
+                },
+                requestStationBoard: function () {
+                    model.view.connections  = false;
+                    model.view.details      = false;
+                    model.view.stationBoard = true;
                 }
             }
         });
