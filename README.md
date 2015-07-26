@@ -6,19 +6,19 @@ So far, a side project. Maybe a real one in few weeks.
 
 Search a connection:
 
-![Connection](http://i.imgur.com/M9VUpQC.png)
+<img src="http://i.imgur.com/M9VUpQC.png" width="300px" alt="Connection" />
 
 See connection details (with platforms, duration, transport name etc.):
 
-![Details](http://i.imgur.com/s9VV8Wu.png)
+<img src="http://i.imgur.com/s9VV8Wu.png" width="300px" alt="Details" />
 
 Menu:
 
-![Menu](http://i.imgur.com/99JjeWC.png)
+<img src="http://i.imgur.com/99JjeWC.png" width="300px" alt="Menu" />
 
 Station board:
 
-![Station board](http://i.imgur.com/psg704X.png)
+<img src="http://i.imgur.com/psg704X.png" width="300px" alt="Station board" />
 
 ## Requirements
 
