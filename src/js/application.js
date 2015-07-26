@@ -137,7 +137,8 @@ window.addEventListener(
                     httpRequest.open(
                         'GET',
                         STATIONBOARD_URI +
-                        'station=' + $('#station').value,
+                        'station=' + $('#station').value +
+                        '&limit=10',
                         true
                     );
                     httpRequest.send();
