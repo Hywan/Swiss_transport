@@ -76,7 +76,7 @@
         <form>
           <gaia-text-input id="from" placeholder="From…" value="Basel"></gaia-text-input>
           <gaia-text-input id="to"   placeholder="To…" value="Genève"></gaia-text-input>
-          <gaia-button v-on="click: requestSearch">Search!</gaia-button>
+          <gaia-button v-on="click: requestSearchConnections">Search!</gaia-button>
         </form>
 
         <gaia-loading v-if="loading.connections"></gaia-loading>
@@ -162,6 +162,38 @@
       <gaia-header action="menu" v-on="click: requestOpenMenu">
         <h1>Station board</h1>
       </gaia-header>
+
+      <section class="padded">
+        <form>
+          <gaia-text-input id="station" placeholder="Station…" value="Lausanne"></gaia-text-input>
+          <gaia-button v-on="click: requestSearchStation">Search!</gaia-button>
+        </form>
+
+        <gaia-loading v-if="loading.station"></gaia-loading>
+
+        <section v-if="station.length > 0">
+          <gaia-sub-header>Station</gaia-sub-header>
+
+          <gaia-list class="contacts">
+            <a v-repeat="station">
+              <div flex>
+                <h3>
+                  {{stop.departure | hour-minute}}
+                  <span class="emoji">🚄</span>
+                  {{name}}
+                </h3>
+                <ul class="inline">
+                  <li v-if="stop.platform">
+                    platform {{stop.platform}}
+                  </li>
+                  <li v-if="to">
+                    to {{to}}
+                  </li>
+                </ul>
+              </div>
+            </a>
+          </gaia-list>
+        </section>
     </section>
   </body>
 

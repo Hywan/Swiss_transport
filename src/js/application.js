@@ -1,4 +1,5 @@
-const CONNECTIONS_URI = 'http://transport.opendata.ch/v1/connections?';
+const CONNECTIONS_URI  = 'http://transport.opendata.ch/v1/connections?';
+const STATIONBOARD_URI = 'http://transport.opendata.ch/v1/stationboard?';
 
 var model = {
     view: {
@@ -8,10 +9,12 @@ var model = {
         stationBoard: false
     },
     loading: {
-        connections: false
+        connections: false,
+        station    : false
     },
     connections: [],
-    connection: null
+    connection: null,
+    station: null
 };
 
 function $(selector) {
@@ -56,31 +59,6 @@ Vue.filter('pop', function(array) {
     );
 });
 
-function Connection(from, to) {
-    this.from         = from;
-    this.to           = to;
-    this.__iterator__ = null;
-
-    model.connections         = [];
-    model.loading.connections = true;
-
-    var httpRequest    = new XMLHttpRequest();
-    httpRequest.onload = function () {
-        model.loading.connections = false;
-
-        console.log(JSON.parse(this.responseText));
-        model.connections = JSON.parse(this.responseText).connections;
-    };
-    httpRequest.open(
-        'GET',
-        CONNECTIONS_URI +
-        'from=' + $('#from').value +
-        '&to=' + $('#to').value,
-        true
-    );
-    httpRequest.send();
-}
-
 window.addEventListener(
     'load',
     function () {
@@ -99,9 +77,26 @@ window.addEventListener(
                         this[callback]();
                     }
                 },
-                requestSearch: function () {
-                    console.log('Start searching…');
-                    new Connection('Yverdon-les-Bains', 'Lausanne');
+                requestSearchConnections: function () {
+                    console.log('Start searching connections…');
+                    model.connections         = [];
+                    model.loading.connections = true;
+
+                    var httpRequest    = new XMLHttpRequest();
+                    httpRequest.onload = function () {
+                        model.loading.connections = false;
+
+                        console.log(JSON.parse(this.responseText));
+                        model.connections = JSON.parse(this.responseText).connections;
+                    };
+                    httpRequest.open(
+                        'GET',
+                        CONNECTIONS_URI +
+                        'from=' + $('#from').value +
+                        '&to=' + $('#to').value,
+                        true
+                    );
+                    httpRequest.send();
                 },
                 requestConnections: function () {
                     model.view.connections  = true;
@@ -126,7 +121,27 @@ window.addEventListener(
                     model.view.connections  = false;
                     model.view.details      = false;
                     model.view.stationBoard = true;
-                }
+                },
+                requestSearchStation: function () {
+                    console.log('Start searching station…');
+                    model.station         = [];
+                    model.loading.station = true;
+
+                    var httpRequest    = new XMLHttpRequest();
+                    httpRequest.onload = function () {
+                        model.loading.station = false;
+
+                        console.log(JSON.parse(this.responseText));
+                        model.station = JSON.parse(this.responseText).stationboard;
+                    };
+                    httpRequest.open(
+                        'GET',
+                        STATIONBOARD_URI +
+                        'station=' + $('#station').value,
+                        true
+                    );
+                    httpRequest.send();
+                },
             }
         });
     }
