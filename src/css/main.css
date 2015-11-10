@@ -121,40 +121,49 @@ ul.inline {
 #menu {
     z-index: 1;
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    transform: translateX(0);
-    transition: transform var(--transition-duration) ease;
 }
 
     #menu[aria-hidden] {
-        transform: translateX(-200vw);
+        pointer-events: none;
+    }
+
+    #menu > a {
+        display: block;
+        width: 100vh;
+        height: 100vh;
+        background: #000;
+        opacity: .5;
+
+        transition: opacity var(--transition-duration) ease;
+    }
+
+    #menu[aria-hidden] > a {
+        opacity: 0;
     }
 
     #menu > ul {
+        position: absolute;
+        top: 0;
+        left: 0;
         list-style: none;
         margin: 0;
         padding: 2em 1em;
-        width: 80%;
-        height: 100%;
-        float: left;
-        box-shadow: 0 0 8em 2.5em rgba(0, 0, 0, .75);
+        width: 70vw;
+        height: 100vh;
         background: var(--header-background);
+
+        transform: translateX(0vw);
+        transition: transform var(--transition-duration) ease;
+    }
+
+    #menu[aria-hidden] > ul {
+        transform: translateX(-100vw);
     }
 
     #menu > ul a {
        color: var(--header-color);
        font-style: normal;
        line-height: 3em;
-    }
-
-    #menu > a {
-        display: block;
-        float: right;
-        width: 20%;
-        height: 100%;
     }
 
 a {

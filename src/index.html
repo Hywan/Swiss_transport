@@ -60,12 +60,12 @@
              view-details: view.details,
              view-station-board: view.stationBoard">
     <section id="menu" aria-hidden="{{view.menuHidden}}">
+      <a v-on="click: requestCloseMenu"> </a>
       <ul>
         <li><a v-on="click: requestCloseMenu('requestConnections')">Connections</a></li>
         <li><a v-on="click: requestCloseMenu('requestStationBoard')">Station board</a></li>
         <li><a href="http://sbb.ch/" target="_blank">SBB</a></li>
       </ul>
-      <a v-on="click: requestCloseMenu"> </a>
     </section>
     <section id="connections" class="panel">
       <gaia-header action="menu" v-on="click: requestOpenMenu">
