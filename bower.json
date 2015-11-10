@@ -24,5 +24,9 @@
     "gaia-value-selector": "gaia-components/gaia-value-selector",
     "gaia-progress": "gaia-components/gaia-progress",
     "moment": "~2.10.3"
+  },
+  "resolutions": {
+    "gaia-component": "0.4.0",
+    "gaia-icons": "~0.10.0"
   }
 }

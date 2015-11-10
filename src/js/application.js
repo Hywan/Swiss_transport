@@ -109,11 +109,11 @@ window.addEventListener(
                         500
                     );
                 },
-                requestDetails: function (e) {
+                requestDetails: function (connection) {
                     model.connection = {
-                        from    : e.targetVM.from,
-                        to      : e.targetVM.to,
-                        sections: e.targetVM.sections
+                        from    : connection.from,
+                        to      : connection.to,
+                        sections: connection.sections
                     };
                     model.view.details     = true;
                 },
