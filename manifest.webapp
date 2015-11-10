@@ -12,5 +12,10 @@
   "developer": {
     "name": "Ivan Enderlin",
     "url": "http://mnt.io/"
+  },
+  "permissions": {
+    "moz-extremely-unstable-and-will-change-webcomponents": {
+      "description": "Use web components"
+    }
   }
 }
